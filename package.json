@@ -1,41 +1,71 @@
 {
-"name": "apple-music-electron",
-"version": "0.1.0",
-"description": "Minimal Electron wrapper for Apple Music web player",
-"main": "main.js",
-"scripts": {
-"start": "electron .",
-"pack": "electron-builder --dir",
-"dist": "electron-builder --linux AppImage"
-},
-"author": "",
-"license": "MIT",
-"devDependencies": {
-"electron": "^26.0.0",
-"electron-builder": "^24.0.0"
-},
-"build": {
-"appId": "com.apple.music.electron",
-"productName": "Apple Music",
-"linux": {
-  "target": ["AppImage"],
-  "category": "Audio",
-  "executableName": "apple-music",
-  "icon": "build/icon.png",
-  "desktop": {
-    "Name": "Apple Music",
-    "Comment": "Apple Music — Electron wrapper",
-    "Terminal": false,
-    "Type": "Application"
+  "name": "apple-music",
+  "productName": "Apple Music",
+  "version": "1.0.0",
+  "description": "Apple Music Desktop App",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sagartaunk/apple-music.git"
+  },
+  "author": "Sagartaunk",
+  "license": "MIT",
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.4"
+  },
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.sagartaunk.applemusic",
+    "productName": "Apple Music",
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.music",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Audio",
+      "executableName": "apple-music",
+      "desktop": {
+        "Name": "Apple Music",
+        "Comment": "Apple Music Desktop App",
+        "Categories": "Audio;Music;Player;AudioVideo;"
+      },
+      "icon": "build/icons"
+    }
   }
-}
-}
-},
-"files": [
-"**/*"
-],
-"directories": {
-"buildResources": "build"
-}
-}
 }
