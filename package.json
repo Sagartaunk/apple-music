@@ -1,0 +1,41 @@
+{
+"name": "apple-music-electron",
+"version": "0.1.0",
+"description": "Minimal Electron wrapper for Apple Music web player",
+"main": "main.js",
+"scripts": {
+"start": "electron .",
+"pack": "electron-builder --dir",
+"dist": "electron-builder --linux AppImage"
+},
+"author": "",
+"license": "MIT",
+"devDependencies": {
+"electron": "^26.0.0",
+"electron-builder": "^24.0.0"
+},
+"build": {
+"appId": "com.apple.music.electron",
+"productName": "Apple Music",
+"linux": {
+  "target": ["AppImage"],
+  "category": "Audio",
+  "executableName": "apple-music",
+  "icon": "build/icon.png",
+  "desktop": {
+    "Name": "Apple Music",
+    "Comment": "Apple Music — Electron wrapper",
+    "Terminal": false,
+    "Type": "Application"
+  }
+}
+}
+},
+"files": [
+"**/*"
+],
+"directories": {
+"buildResources": "build"
+}
+}
+}
